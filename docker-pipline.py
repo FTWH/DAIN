@@ -30,9 +30,9 @@ os.system(f'rm -rf {FRAME_INPUT_DIR}') # %shell rm -rf '{FRAME_INPUT_DIR}'
 os.system(f'mkdir -p {FRAME_INPUT_DIR}') # %shell mkdir -p '{FRAME_INPUT_DIR}'
 
 if (END_FRAME==-1):
-  os.system(f'ffmpeg -i /content/DAIN/{filename} -vf select=gte(n\,{START_FRAME}),setpts=PTS-STARTPTS {FRAME_INPUT_DIR}/%05d.png') 
+  os.system(f"ffmpeg -i /content/DAIN/{filename} -vf '" + f"select=gte(n\,{START_FRAME}),setpts=PTS-STARTPTS' " + f'{FRAME_INPUT_DIR}/%05d.png') 
 else:
-  os.system(f'ffmpeg -i /content/DAIN/{filename} -vf select=between(n\,{START_FRAME}\,{END_FRAME}),setpts=PTS-STARTPTS {FRAME_INPUT_DIR}/%05d.png') 
+  os.system(f"ffmpeg -i /content/DAIN/{filename} -vf '" +f"select=between(n\,{START_FRAME}\,{END_FRAME}),setpts=PTS-STARTPTS' " + f'{FRAME_INPUT_DIR}/%05d.png') 
 
 png_generated_count_command_result = os.popen(f'ls {FRAME_INPUT_DIR} | wc -l').read().strip()
 frame_count = int(png_generated_count_command_result)
