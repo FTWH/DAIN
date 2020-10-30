@@ -80,7 +80,7 @@ if (RESIZE_HOTFIX):
 os.chdir(f'{FRAME_OUTPUT_DIR}') 
 filename = os.path.basename(INPUT_FILEPATH)
 os.system(f'ffmpeg -i /content/DAIN/{filename} -acodec copy output-audio.aac') 
-os.system(f'ffmpeg -y -r {TARGET_FPS} -f image2 -pattern_type glob -i *.png -i output-audio.aac -shortest /content/{OUTPUT_FILE_PATH}') 
+os.system(f"ffmpeg -y -r {TARGET_FPS} -f image2 -pattern_type glob -i '*.png' -i output-audio.aac -shortest /content/{OUTPUT_FILE_PATH}") 
 
 if (AUTO_REMOVE):
   os.system(f'rm -rf {FRAME_OUTPUT_DIR}/*')
